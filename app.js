@@ -5,6 +5,7 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 const path=require('path')
+require('dotenv').config();
 
 app.use(express.json())
 app.set('view engine','ejs');
@@ -27,7 +28,7 @@ io.on('connection', (socket) => {
   })
 });
 
-server.listen(3300, () => {
+server.listen(process.env.PORT, () => {
   console.log('backend connected successfully');
 });
 
